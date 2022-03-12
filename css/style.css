@@ -1,0 +1,35 @@
+.cabecalho{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid darkgreen;
+    padding-bottom: 1rem;
+}
+.titulo{
+    text-align: center;
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+.cabecalho img{
+    width: 200px;
+}
+main{  
+    background-position:top;
+    text-align: center;
+    font-size: 2rem;
+    height: 100vw;
+}
+.jogadas{
+    display: flex;
+    margin: 0 auto;
+    max-width: 300px;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 1024px){
+    .cabecalho img{
+        display: none;
+    }
+    .titulo{
+        font-size: 2.5rem;
+    }
+}

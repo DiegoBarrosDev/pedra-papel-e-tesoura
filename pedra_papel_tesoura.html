@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, Papel e Tesoura</title>
+    <script src="https://kit.fontawesome.com/8af7d329a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="img/background-1.png" alt="">
+        <h1 class="titulo">Pedra, papel e tesoura</h1>
+        <img src="img/background-1.png" alt="">
+    </header>
+
+    <main>
+        <p class="instrucao">Escolha um objeto: </p>
+        <section class="jogadas">
+            <div>
+                <input type="radio" name="jogo" id="pedra">
+                <label for="pedra"><i class="far fa-hand-rock"></i></label>
+            </div>
+            <div>
+                <input type="radio" name="jogo" id="papel">
+                <label for="papel"><i class="far fa-hand-paper"></i></label>
+            </div>
+            <div>
+                <input type="radio" name="jogo" id="tesoura">
+                <label for="tesoura"><i class="far fa-hand-scissors"></i></label>
+            </div>
+        </section>
+        <section class="botao">
+            <input type="button" value="Jogar" onclick="jogar()">
+        </section>
+        <p id="resultado"></p>
+        
+    </main>
+    
+    <script>
+        function jogar(){
+            var jogadapc = Math.round(Math.random()*10)%3
+            console.log(jogadapc)
+            if(jogadapc == 0){
+                var res = "Pedra"
+            }else if (jogadapc == 1){
+                var res = "Papel"
+            } else{
+                var res = "Tesoura"
+            }
+            console.log(res)
+
+            var escolha = document.getElementsByName('jogo')
+            var jogadaHumana = ''
+            if (escolha[0].checked){
+                jogadaHumana = "Pedra"
+                console.log(jogadaHumana)
+            }
+            if(escolha[1].checked){
+                jogadaHumana = "Papel"
+                console.log(jogadaHumana)
+            }
+            if(escolha[2].checked){
+                jogadaHumana = "Tesoura"
+                console.log(jogadaHumana)
+            }
+            // Condições de vitória
+            if(res == jogadaHumana){
+                var resultado = document.querySelector('#resultado')
+                resultado.innerHTML = `EMPATE - Você e o computador escolheram ${res}`
+            } else if ((jogadaHumana == "Pedra" && res == "Tesoura") || (jogadaHumana == "Tesoura" && res == "Papel") || (jogadaHumana == "Papel" && res == "Pedra")){
+                var resultado = document.querySelector('#resultado')
+                resultado.innerHTML = `PARABENS! Você escolheu ${jogadaHumana} e o computador escolheu ${res}. Você VENCEU!!!`
+            } else if((jogadaHumana == "Tesoura" && res == "Pedra") || (jogadaHumana == "Papel" && res == "Tesoura") || (jogadaHumana == "Pedra" && res == "Papel")){
+                var resultado = document.querySelector('#resultado')
+                resultado.innerHTML = `Tente de novo!!! Você escolheu ${jogadaHumana} e o computador escolheu ${res}. Você PERDEU!!!`
+            }
+
+        }
+    </script>
+</body>
+</html>
